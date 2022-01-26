@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathis Grieco | Front-End Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+<link rel="icon" type="image/x-icon" href="img/favicon.png">
+<script src="https://kit.fontawesome.com/dbc927fdcf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="hamburger" id="hamburger">
+        <span class="burgerspan"></span>
+    </div>
+
+    <div class="menu">
+        <div class="menu-list">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#portfolio">PORTFOLIO</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+
+    </div>
+
+    <div class="home" id="home">
+        <div class="home-img">
+        </div>
+
+        <div class="home-info">
+            <div class="home-text reveal">
+                <h2>I'm</h2>
+                <h1>Mathis Grieco</h1>
+                <h3>I'm a Front End Developer.</h2>
+                <a class="btn" href="#about">About Me</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="about" id="about">
+        <div class="about-title reveal">
+            <h1>About Me</h1>
+            <span></span>
+        </div>
+        <div class="about-content">
+        <div class="about-text reveal">
+            <p>I am a 19 year old boy with a passion for computer science since childhood. I started my website development journey for about a year. I have carried out several projects and I am very confident for the future, I work continuously to refine my skills in this field keeping complete customer satisfaction as a priority. </p>
+            <p class="about-p1">Problem Solving aptitude, Creativity</p>
+            <p class="about-p2">HTML , CSS , Javascript</p>
+        </div>
+        <div class="about-img reveal">
+            
+        </div>
+    </div>
+    </div>
+
+    <div class="portfolio" id="portfolio">
+        <div class="portfolio-title reveal">
+            <h1>Recent Projects</h1>
+            <span></span>
+        </div>
+        <div class="portfolio-works">
+            <a href="https://www.anthisinformatica.it/" target="blank"><div class="work reveal">
+                <div class="work-image reveal">
+                    <img src="img/anthis.PNG" alt="">
+                </div>
+                <div class="work-title">
+                    <h2>Anthis Informatica</h2>
+                    <span></span>
+                </div>
+            </div>
+            </a>
+            <a target="blank" href="http://www.giuseppemaranodesign.com/"><div class="work">
+                <div class="work-image reveal">
+                    <img src="img/giumar.PNG" alt="">
+                </div>
+                <div class="work-title">
+                    <h2>Giumar Boutique</h2>
+                    <span></span>
+                </div>
+            </div>
+            </a>
+               
+    </div>
+
+
+    <div class="contact" id="contact">
+        <div class="contact-title reveal">
+            <h1>Contact Me</h1>
+            <span></span>
+        </div>
+
+        
+        <form class="form" name="formmail" method="post" action="formmail.php" onsubmit="return controlloForm()">
+            <input type="hidden" name="successo" value="success.html">
+            <div class="form-row reveal">
+                <input type="text" id="nome" name="nome" placeholder="First Name">
+                <input type="text" id="cognome" name="cognome" placeholder="Last Name">
+            </div>
+            <div class="form-row reveal">
+                <input type="text" id="email" name="email" placeholder="Email">
+                <input type="text" id="tel" name="tel" placeholder="Telephone Number">
+            </div>
+            <div class="form-row reveal">
+                <textarea id="msg" name="msg" cols="20" rows="8" placeholder="Your Message Here"></textarea>
+
+            </div>
+
+            <div class="form-button reveal">
+                <input type="submit" value="Send">
+            </div>
+        </form>    
+    </div>
+
+    <footer class="footer">
+        <div class="copyright">© Handcrafted by me.</div>
+    </footer>
+    
+<!---->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        /* Hamburger Menu */
+        const hamburger=document.querySelector('.hamburger');
+        const menu=document.querySelector('.menu');
+        const menuList=document.querySelector('.menu-list')
+        let menuOpen=false;
+        hamburger.addEventListener('click', function(){
+            if(menuOpen==false){
+                hamburger.classList.add('open');
+                menu.classList.add('open');
+                menuOpen=true;
+            }
+            else{
+                hamburger.classList.remove('open');
+                menu.classList.remove('open');;
+                menuOpen=false;
+            }
+
+        });
+        menuList.addEventListener('click', function(){
+            menu.classList.remove('open');
+            hamburger.classList.remove('open');
+            menuOpen=false;
+        });
+
+
+        /* Convalida Form Contatti */
+
+        function verificaEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function controlloForm() {
+  var nome = document.forms["formmail"]["nome"].value;
+  var cognome = document.forms["formmail"]["cognome"].value;
+  var email = document.forms["formmail"]["email"].value;
+  var tel = document.forms["formmail"]["tel"].value;
+  var msg = document.forms["formmail"]["msg"].value;
+
+  if (nome == "" || cognome =="" || email == "" || msg == "") {
+    alert("I campi Nome, Cognome, Email e Messaggio sono obbligatori!");
+    return false;
+  }
+  else if (verificaEmail(email) !== true) {
+    alert("L'indirizzo email non sembra corretto!");
+    return false;  
+  }else{
+    return true;
+  }
+}
+
+/* Scroll Reveal */
+
+ScrollReveal().reveal('.reveal', { distance: '50px',  duration: 700 , easing:'ease-in-out' , delay: 100  });
+
+        
+    </script>
+    
+</body>
+</html>
